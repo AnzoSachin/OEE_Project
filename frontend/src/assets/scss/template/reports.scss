@@ -1,0 +1,256 @@
+
+
+.card1{
+    background-color: #B0CFDE;
+    width: 71rem;
+    height: 4rem;
+    margin-left: 3rem;
+    margin-top: -1rem;
+    border: 1px solid;
+    border-radius: 1rem;
+    .p{
+        font-weight: 400;
+    }
+.insertform{
+    display: flex;
+}
+
+    .line-b-select-3{
+        display: flex;
+        .container-3{
+            margin-left: 17px;
+            margin-top: -10px;
+            width: 12rem;
+        }
+    }
+    .line-b-select-5{
+        padding-left: 2rem;
+        display: flex;
+        .container-5{
+            padding-left: 1rem;
+            padding-top: 0rem;
+            margin-top: -9px;
+            .form-control{
+                width: 12rem;
+            }
+           
+        }
+    }
+    .line-b-select-6{
+        padding-left: 2rem;
+        display: flex;
+        .container-6{
+            margin-left: 18px;
+    margin-top: -8px;
+            .form-control{
+                width: 12rem;
+            }
+           
+        }
+    }
+    .refreshbutton{
+        margin-left: 61rem;
+        margin-top: -8rem;
+        height: 0rem; 
+    }
+}
+
+.card2{
+    margin-top: 1rem;
+    width: 46rem;
+    margin-left: 1rem;
+    height: 22rem;
+}
+.card3{
+    width: 30rem;
+    height: 22rem;
+    margin-left: 48rem;
+    margin-top: -22rem;
+    .table-responsive{
+        overflow: scroll;
+    height: 18rem;
+    }
+}
+.card4{
+    width: 39rem;
+    height: 25rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    .card-body{
+        overflow: scroll;
+    }
+}
+.card5{
+    width: 37rem;
+    margin-left: 41rem;
+    height: 25rem;
+    margin-top: -25rem;
+}
+
+.OEETrends{
+    .card5{
+        width: 54rem;
+        margin-left: 11rem;
+        height: 31rem;
+        margin-top: 1rem; 
+        .card-body{
+            .oeeshift{
+                margin-left: 24rem;
+            }
+        }
+    }
+}
+.DatewiseFugaiReport{
+    .card5{
+        width: 54rem;
+        margin-left: 11rem;
+        height: 60rem;
+        margin-top: 1rem; 
+        .card-body{
+           .table-responsive{
+            height: 10rem;
+           }
+
+           .tagCharts{
+            display: flex;
+            justify-content: space-between;
+            .overallTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+            }
+          
+            .redTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+               }
+               .whiteTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+               }
+
+           }
+          
+        }
+    }
+}
+
+.EmployewiseFugaiReport{
+    .card1{
+        .refreshbutton{
+            margin-left: 64rem !important
+        }
+    }
+    .card5{
+        width: 54rem;
+        margin-left: 11rem;
+        height: 39rem;
+        margin-top: 1rem; 
+        .card-body{
+           .table-responsive{
+            height: 10rem;
+           }
+
+           .tagCharts{
+            display: flex;
+            justify-content: space-between;
+            .overallTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+            }
+          
+            .redTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+               }
+               .whiteTagStatsChart{
+                height: 15rem;
+                width: 17rem;
+               }
+
+           }
+          
+        }
+    }
+}
+
+.breakdowntrendcard1{
+    background-color: #B0CFDE;
+    width: 71rem;
+    height: 4rem;
+    margin-left: 3rem;
+    margin-top: -1rem;
+    border: 1px solid;
+    border-radius: 1rem;
+    .p{
+        font-weight: 400;
+    }
+.insertform{
+    display: flex;
+}
+
+    .line-b-select-3{
+        display: flex;
+        .container-3{
+            margin-left: 17px;
+            margin-top: -10px;
+            width: 12rem;
+        }
+    }
+    .line-b-select-5{
+        padding-left: 2rem;
+        display: flex;
+        .container-5{
+            padding-left: 1rem;
+            padding-top: 0rem;
+            margin-top: -9px;
+            .form-control{
+                width: 12rem;
+            }
+           
+        }
+    }
+    .line-b-select-6{
+        padding-left: 2rem;
+        display: flex;
+        .container-6{
+            margin-left: 18px;
+    margin-top: -8px;
+            .form-control{
+                width: 12rem;
+            }
+           
+        }
+    }
+    .refreshbutton{
+        margin-left: 61rem;
+        margin-top: -8rem;
+        height: 0rem; 
+    }
+}
+
+.breakdowntrendcard5{
+    width: 54rem;
+    margin-left: 11rem;
+    height: 31rem;
+    margin-top: 1rem; 
+    .card-body{
+        .oeeshift{
+            margin-left: 24rem;
+        }
+    }
+}
+.breakdowntrendcard6{
+    width: 54rem;
+    margin-left: 11rem;
+    height: 31rem;
+    margin-top: 1rem; 
+    .card-body{
+        .table-responsive{
+            height: 27rem;
+            overflow: scroll;
+        }
+        .oeeshift{
+            margin-left: 24rem;
+        }
+    }
+}

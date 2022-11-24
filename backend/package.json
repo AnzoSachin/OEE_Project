@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js &"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "express-limit": "^0.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mssql": "^9.0.1",
+    "nodemon": "^2.0.19",
+    "route": "^0.2.5",
+    "sql": "^0.78.0"
+  }
+}
