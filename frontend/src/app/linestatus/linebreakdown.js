@@ -10,7 +10,7 @@ import lineStatusApi from "../../api/lineStatusApi"
 const LineBreakDown = () =>{
   const[linedata,setLineData] = useState([])
   const[line,setLine] = useState({})
-  const[BreakDownStatus,setStatus] = useState({}) 
+  const[BreakDownStatus,setStatus] = useState([]) 
 
 
  
@@ -35,8 +35,8 @@ const LineBreakDown = () =>{
     .then((res) => res.json())
     .then((data) => {
      
-           console.log("getBreakDownDetail",data.recordsets )
-           setStatus(data.recordsets)
+           console.log("getBreakDownDetail",data )
+           setStatus(data)
           
           })
    
@@ -94,18 +94,15 @@ const LineBreakDown = () =>{
 
                     </div>
                     <div className="card-body">
+                    <div className="table-responsive">
                     <Table bordered className="mg-b-0">
                
                <thead>
                  <tr>
-                   <th>MachineUpTime</th>
-                   <th>MachineDownTime</th>
-                   <th>DownPeriod</th>
-                   <th>Process</th>
-                   <th>Reason</th>
-                   <th>SAP Notify</th>
-                   <th>UserName</th>
-                   <th>Comment</th>
+                   <th>Line Code</th>
+                   <th>BDStart Time</th>
+                   <th>BDEnd Time</th>
+                   
                    
                   
                    
@@ -113,19 +110,18 @@ const LineBreakDown = () =>{
                  </tr>
                </thead>
                <tbody>
-                 <tr>
-                   <th scope="row">A202</th>
-                   <td>Machical</td>
-                   <td>Red</td>
-                   <td>Open</td>
-                   <td>unknown</td>
-                   <td>Open</td>
-                   <td>Mhomad</td>
-                   <td>Due to lunch</td>
-                   
-                   
-                  
-                 </tr>
+               {BreakDownStatus.map((item) => (
+                <tr>
+             
+              <td>{item.LineCode}</td>
+              <td>{item.BDStartTime}</td>
+              <td>{item.BDEndTime}</td>
+            
+              
+            
+               
+            </tr>
+          ))}
                
                
                
@@ -135,6 +131,7 @@ const LineBreakDown = () =>{
                 
                </tbody>
              </Table>
+             </div>
                     </div>
 
                  </div>

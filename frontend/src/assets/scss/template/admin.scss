@@ -770,6 +770,35 @@ overflow: hidden;
      
     }
   }
+  .line-b-select-9{
+    display: flex;
+    // margin-top: 20px;
+   
+    p {
+     padding-top: 7px;
+    }
+    .container-9{
+      margin-left: 217px;
+    margin-top: -38px;
+    }
+  }
+
+  .line-b-select-15{
+    margin-left: 335px;
+    margin-top: -45px;
+    //display: flex;
+    // margin-top: 20px;
+   
+    p {
+     padding-top: 7px;
+    }
+    .container-15{
+      margin-left: 135px;
+      margin-top: -46px;
+      margin-right: 238px;
+    }
+  }
+
    }
    
    
@@ -801,7 +830,10 @@ background-color: #B0CFDE;
   .card-body{
     background-color: white;
     
-    
+    .table-responsive{
+      overflow: scroll;
+      height: 395px;
+    }
   
      }
   

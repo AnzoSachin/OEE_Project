@@ -47,11 +47,12 @@ const getPGList=async(req,res)=> {
 const getContainerSize = async(req,res) => {
    
     let data = req.body
+    let line = "202"
     console.log("daaataaa",data)
     try {
         let pool = await sql.connect(config)
                await pool.request()
-               .input("LineCode",sql.NVarChar,data.line)
+               .input("LineCode",sql.NVarChar,line)
                .execute("spGetContainer")
                .then(result => {
               //  console.log("result",result)

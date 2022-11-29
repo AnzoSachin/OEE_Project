@@ -3,6 +3,17 @@ let baseurl='http://localhost:5000/anzo/admin'
 
 
 const AdminApi = {
+  getLineData:function()
+  {
+      return  axios({
+          "method": "GET",
+          "url": `${baseurl}/linedata`,
+          "headers": {
+            "content-type": "application/json",
+            
+          }
+        })
+  },
     getUserRole:function()
     {
         return  axios({
@@ -194,6 +205,116 @@ const AdminApi = {
               
             }
           })
+    },
+
+    getFaultList:function()
+    {
+        return  axios({
+            "method": "GET",
+            "url": `${baseurl}/faultlist`,
+            "headers": {
+              "content-type": "application/json",
+              
+            }
+          })
+    },
+    getFaultList1: function(data)
+    {
+   
+            console.log("getComplaintData api",data)
+            return fetch(`${baseurl}/faultlist`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
+    },
+
+    addFault: function(data)
+    {
+   
+            console.log("getComplaintData api",data)
+            return fetch(`${baseurl}/addFault`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
+    },
+
+    updateFault: function(data)
+    {
+   
+            console.log("getComplaintData api",data)
+            return fetch(`${baseurl}/updateFault`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
+    },
+
+    getAllMachine:function()
+    {
+        return  axios({
+            "method": "GET",
+            "url": `${baseurl}/allMachine`,
+            "headers": {
+              "content-type": "application/json",
+              
+            }
+          })
+    },
+    getMachineData:function()
+    {
+        return  axios({
+            "method": "GET",
+            "url": `${baseurl}/machinedata`,
+            "headers": {
+              "content-type": "application/json",
+              
+            }
+          })
+    },
+   
+
+    updateAlert: function(data)
+    {
+   
+            console.log("updateAlert api",data)
+            return fetch(`${baseurl}/updatealert`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
+    },
+    
+    getAlertDetail: function(data)
+    {
+   
+            console.log("getAlertDetail api",data)
+            return fetch(`${baseurl}/getalertdetail`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
     },
 
     // getLineType : function()

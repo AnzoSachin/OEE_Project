@@ -18,6 +18,14 @@ router.get("/filecategory", admin.getFileCategoryList);
 router.post("/savecalendar", admin.saveCalendar);
 router.get("/calendarshutdowndetails", admin.getShutDownDetails);
 router.get("/calendarshutdownreason", admin.getShutDownReason);
+router.get("/faultlist",admin.getfaultList);
+router.post("/faultlist",admin.getfaultList1);
+
+router.post("/addFault",admin.addFault);
+router.post("/updateFault",admin.updateFault);
+router.get("/machinedata", admin.machinedata);
+router.post("/updatealert",admin.updateAlert);
+router.post("/getalertdetail",admin.getAlertDetail);
 
 
 

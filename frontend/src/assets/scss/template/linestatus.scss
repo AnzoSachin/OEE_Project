@@ -210,9 +210,16 @@ body {
 
    .card-linebreakdown-child{
     height:456px;
-
+.table-responsive{
+  overflow: scroll;
+  height: 360px;
+}
     .card-body{
-      background-color: darkgray;
+      background-color: white !important
+
+
+
+    
       
       
     

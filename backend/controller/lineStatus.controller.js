@@ -16,7 +16,7 @@ const getBreakDownDetail = async(req,res) =>{
           .execute('spGetBreakDowndetail')
           .then(result => {
             console.log("result",JSON.stringify(result))
-            res.json(result.recordsets);
+            res.json(result.recordsets[1]);
 
 
         }

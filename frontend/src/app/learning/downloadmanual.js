@@ -9,6 +9,7 @@ import dasboardApi from "../../api/dashboardApi"
 import downloadManual from "../../api/downloadmanualApi"
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
+import moment from 'moment'
 
 const DownloadManual = () =>{
   const[filedata,setFileData] = useState([])
@@ -63,7 +64,7 @@ const DownloadManual = () =>{
         <div className="batch">
      
        
-        <div className="card card-batch-one">
+        <div className="card card-dm-one">
         <div className="card-header">
             <h7>Download</h7>
         
@@ -74,7 +75,7 @@ const DownloadManual = () =>{
                
                 <div className="card-body">
                     <h4>Download Document </h4>
-                 <div className="card card-batch-child">
+                 <div className="card card-dm-child">
                     <div className="card-header">
                      </div>
                     <div className="card-body">
@@ -102,7 +103,7 @@ const DownloadManual = () =>{
               <td>{item.Category}</td>
               <td>{item.FileName}</td>
               <td>{item.Description}</td>
-              <td>{item.UploadDate}</td>
+              <td>{moment(item.UploadDate).format('YYYY-MM-DD HH:mm:ss')}</td>
               
             
                

@@ -1,7 +1,7 @@
+
 {
   "name": "demo",
   "version": "0.1.0",
-  "homepage": "https://bootstrapdash.com/demo/azia-react-free/template/preview",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",

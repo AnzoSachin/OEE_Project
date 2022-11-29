@@ -208,9 +208,9 @@ const Batch = () =>{
   useEffect(() =>{
     getPGList()
     getLineData()
-    getBatchList()
+   // getBatchList()
     getMixerList()
-    getContainerSize()
+   // getContainerSize()
     getBatchNameList()
    
 

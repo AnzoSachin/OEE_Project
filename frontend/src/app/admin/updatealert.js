@@ -1,18 +1,84 @@
 
-import React, { Component, useEffect, useState } from "react";
-
+import React, { Component, useEffect, useState,useCallback } from "react";
 import { Table } from 'react-bootstrap';
-
 import AdminApi from '../../api/adminApi'
 import { Form } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateAlerts = (props) =>{
+  const[sender,setSender] = useState([])
+  const[escaltion1,setEscaltion1] = useState([])
+  const[time1,setTime1] = useState([])
+  const[escaltion2,setEscaltion2] = useState([])
+  const[time2,setTime2] = useState([])
+  const[escaltion3,setEscaltion3] = useState([])
+  const[time3,setTime3] = useState([])
+  const[IsActive,setIsActive] = useState('N')
+  console.log("props",props)
 
+    let id =  props.ID
+  const handleSendTo = (e) =>{
+    setSender(e.target.value)
+  }
+  const handleEscaltion1 = (e) =>{
+    setEscaltion1(e.target.value)
+  }
+  const handleEscaltion2 = (e) =>{
+    setEscaltion2(e.target.value)
+  }
+  const handleEscaltion3 = (e) =>{
+    setEscaltion3(e.target.value)
+  }
+  const handleTime1 = (e) =>{
+    setTime1(e.target.value)
+  }
+  const handleTime2 = (e) =>{
+    setTime2(e.target.value)
+  }
+  const handleTime3 = (e) =>{
+    setTime3(e.target.value)
+  }
+
+  const handleIsActive = (e) =>{
+    setIsActive('Y')
+  }
+
+  const updateAlert = useCallback(() =>{
+    AdminApi.updateAlert({id,sender,escaltion1,time1,escaltion2,time2,escaltion3,time3,IsActive})
+    .then((res)=>{
+      console.log("getfaultlist",res.data)
+      toast.info('Alert updated successfully!');
+     
+    })
+      })
+
+      const getAlertDetail = useCallback(() =>{
+        AdminApi.getAlertDetail({id})
+        .then((res) => res.json())
+        .then((data) => {
+             console.log("getAlertDetail",data)
+            
+              })
+          })
+
+          useEffect(() =>{
+           getAlertDetail()
+           },[]
+          )
   
    
     return(
         <div className="UpdateAlerts">
+          <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+theme="light"
+/>
+<ToastContainer/>
      
        
         <div className="card card-UpdateAlerts-one">
@@ -37,7 +103,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder=""
-                       value={props.alerttype}
+                       value={props.AlertType}
                         aria-label=""
                         aria-describedby="basic-addon1"
                           />
@@ -51,7 +117,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder=""
-                       value={props.updatealert}
+                       value={props.Alert}
                         aria-label=""
                         aria-describedby="basic-addon1"
                           />
@@ -65,6 +131,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="Ex:- 9734562756,9678345676"
+                       onChange={(e) => handleSendTo(e)}
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -83,6 +150,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="Ex:- xyz@gmail.com"
+                       onChange={(e) => handleEscaltion1(e)}
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -97,6 +165,8 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="in hour"
+                       onChange={(e) => handleTime1(e)}
+                       type="time"
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -114,6 +184,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="Ex:- xyz@gmail.com"
+                       onChange={(e) => handleEscaltion2(e)}
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -128,6 +199,8 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="in hour"
+                       onChange={(e) => handleTime2(e)}
+                       type="time"
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -145,6 +218,7 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="Ex:- xyz@gmail.com"
+                       onChange={(e) => handleEscaltion3(e)}
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -159,6 +233,8 @@ const UpdateAlerts = (props) =>{
         
                       <Form.Control
                        placeholder="in hour"
+                       onChange={(e) => handleTime3(e)}
+                       type="time"
                       // value={comment}
                         aria-label=""
                         aria-describedby="basic-addon1"
@@ -175,7 +251,7 @@ const UpdateAlerts = (props) =>{
         <div key={`inline-${type}`} className="mb-3">
           <Form.Check
             inline
-          //  onChange={(e) => handleIsActive(e)}
+          onChange={(e) => handleIsActive(e)}
             label="Is Active"
             name="group1"
             type={type}
@@ -190,7 +266,7 @@ const UpdateAlerts = (props) =>{
                       </div>
                       <button className="classbutton"
                       onClick={(e) => {
-                       // saveData()
+                        updateAlert()
                       }}
                     >
                       Update

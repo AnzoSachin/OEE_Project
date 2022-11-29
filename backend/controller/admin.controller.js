@@ -291,13 +291,12 @@ const saveCalendar = async(req,res) => {
                 
                 
                         })
-              
-                     
-                    
-                } catch (error) {
+               } catch (error) {
                     console.log(error)
                 }
                 }
+
+
                var save=0; 
                const sav =async(sav)=>{
                 let filname = "abc"
@@ -351,10 +350,160 @@ const saveCalendar = async(req,res) => {
                 }
                 }
 
+                const machinedata = async(req,res) => {
+                    let data = req.body
+                    console.log("machinedata",data)
+                    try{
+                        let pool = await sql.connect(config)
+                        await pool.request()
+                        .execute('spMachines')
+                        .then(result => {
+                            res.json(result);
+                        })
+                    }catch(error){
+                        console.log(error)
+                    }
+                } 
+                const addFault = async(req,res) => {
+                    let data = req.body
+                   console.log("addFault",data)
+                     try {
+                         let pool = await sql.connect(config)
+                                await pool.request()
+                                .input("Fault",sql.NVarChar,data.fault)
+                                .input("FaultId",sql.Int,data.faultid)
+                                .input("MachineId",sql.Int,data.machineid)
+                                .input("IsPlanned",sql.NVarChar,data.isplanned)
+                                .input("PlannedDuration",sql.NVarChar,data.plannedduration)
+                                .input("IsActive",sql.NVarChar,data.isactive)
+                                .input("Action",sql.NVarChar,data.action)
+                                .output("ErrMsg",sql.NVarChar,)
+                                .execute("spAddUpdateFault")
+                                .then(result => {
+                              res.json(result);
+                     })
+                   } catch (error) {
+                         console.log(error)
+                     }
+                     }
+            
+            
+                     const updateFault = async(req,res) => {
+                        let data = req.body
+                       console.log("updateFault",data)
+                         try {
+                             let pool = await sql.connect(config)
+                                    await pool.request()
+                                    .input("Fault",sql.NVarChar,data.fault)
+                                .input("FaultId",sql.Int,data.faultid)
+                                .input("MachineId",sql.Int,data.machineid)
+                                .input("IsPlanned",sql.NVarChar,data.isplanned)
+                                .input("PlannedDuration",sql.NVarChar,data.plannedduration)
+                                .input("IsActive",sql.NVarChar,data.isactive)
+                                .input("Action",sql.NVarChar,data.action)
+                                .output("ErrMsg",sql.NVarChar,)
+                                    .execute("spAddUpdateFault")
+                                    .then(result => {
+                                  res.json(result);
+                         })
+                       } catch (error) {
+                             console.log(error)
+                         }
+                         } 
+                         const getfaultList=async(req,res)=> {
+                            let data = req.body
+                            console.log("getfaultList",data)
+
+                            try {
+                                let pool = await sql.connect(config);
+                                let line = await pool.request()
+                                              .execute('spGetMachineFaultDetail')
+                                let data=line.recordsets;
+                                
+                                res.json(data[0]);
+                            }
+                            catch (error) {
+                                console.log(error);
+                            }
+                        }
+
+
+                      
+                        const getfaultList1=async(req,res)=> {
+                            let data = req.body
+                            console.log("getfaultList",data)
+
+                            try {
+                                let pool = await sql.connect(config);
+                                let line = await pool.request()
+                                              .input("MachineCode",sql.NVarChar,data.line)
+                                              .execute('spGetMachineFaultDetail')
+                                let data1=line.recordsets;
+                                
+                                res.json(data1[0]);
+                            }
+                            catch (error) {
+                                console.log(error);
+                            }
+                        }
+
+                        const updateAlert = async(req,res) => {
+                            let data = req.body
+                            let ID = data.id.toString()
+                           console.log("updateAlert",data)
+                             try {
+                                 let pool = await sql.connect(config)
+                                        await pool.request()
+                                    .input("Id",sql.NVarChar,ID)
+                                    .input("Sender",sql.NVarChar,data.sender)
+                                    .input("Escalation",sql.NVarChar,data.escaltion1)
+                                    .input("EscalationTime",sql.NVarChar,data.time1)
+                                    .input("Escalation2",sql.NVarChar,data.escaltion2)
+                                    .input("EscalationTime2",sql.NVarChar,data.time2)
+                                    .input("Escalation3",sql.NVarChar,data.escaltion3)
+                                    .input("EscalationTime3",sql.NVarChar,data.time3)
+                                    .input("IsActive",sql.NVarChar,data.IsActive)
+                                    .execute("spUpdateAlert")
+                                        .then(result => {
+                                      res.json(result);
+                             })
+                           } catch (error) {
+                                 console.log(error)
+                             }
+                             } 
+
+                             const getAlertDetail = async(req,res) => {
+                                let data = req.body
+                                let ID = data.id.toString()
+                               console.log("getAlertDetail",ID)
+                                 try {
+                                     let pool = await sql.connect(config)
+                                            await pool.request()
+                                        .input("Id",sql.NVarChar,ID)
+                                       
+                                        .execute("spGetAlertDetail")
+                                            .then(result => {
+                                                console.log("result===",result.recordset)
+                                          res.json(result.recordset);
+                                 })
+                               } catch (error) {
+                                     console.log(error)
+                                 }
+                                 } 
+
+
 module.exports = {
+    
     addUser,
+    addFault,
     getShift,
     UploadFile,
+    updateAlert,
+    updateFault,
+    machinedata,
+    getfaultList,
+    getAlertDetail,
+    getfaultList1,
     allMachine,
     getLineType,
     UploadFile1,

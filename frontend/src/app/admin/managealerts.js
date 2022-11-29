@@ -1,8 +1,6 @@
 
 import React, { Component, useEffect, useState } from "react";
-
 import { Table } from 'react-bootstrap';
-
 import AdminApi from '../../api/adminApi'
 import UpdateAlerts from './updatealert'
 
@@ -12,10 +10,12 @@ const ManageAlerts = () =>{
     const [updatealert,setUpdateAlert] = useState([])
     const [flag,setflag] = useState(false)
     const [show,setShow] = useState(true)
+    const [id,setID] = useState()
 
-    const updateFlag = (AlertType,Alert) =>{
+    const updateFlag = (AlertType,Alert,id) =>{
         
        setShow(!show)
+       setID(id)
        setAlertType(AlertType)
        setUpdateAlert(Alert)
     }
@@ -58,25 +58,7 @@ const ManageAlerts = () =>{
                   <h4>Modified Alert </h4>
                <div className="card card-ManageAlerts-child">
                   <div className="card-header">
-                  
-                  
-                
-                 
-
-                 
-                   
-                    
-                  
-
-                  
-
-                    
-                    
-                
-
-                 
-
-                  </div>
+                   </div>
                   <div className="card-body">
                   <div className="table-responsive">
             <Table bordered className="mg-b-0">
@@ -98,7 +80,7 @@ const ManageAlerts = () =>{
               <tr key={item._id}>
 
 
-            <td>{  <div onClick={() => updateFlag(item.AlertType,item.Alert)}>Update</div>}</td>
+            <td>{  <div onClick={() => updateFlag(item.AlertType,item.Alert,item.ID)}>Update</div>}</td>
             <td>{item.AlertType}</td>
             <td>{item.Alert}</td>
             <td>{item.Description}</td>
@@ -121,7 +103,7 @@ const ManageAlerts = () =>{
                 
               </div>
               {/* card-body */}
-            </div>:<UpdateAlerts AlertType = {alerttype} Alert = {alert} disableflag = {disableflag}/> 
+            </div>:<UpdateAlerts AlertType = {alerttype} Alert = {updatealert} ID = {id} disableflag = {disableflag} /> 
       }
         
     </div>
