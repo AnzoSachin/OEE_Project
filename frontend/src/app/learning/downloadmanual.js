@@ -1,11 +1,11 @@
 
-import React, { Component, useCallback, useEffect, useState } from "react";
-import Select from "react-select";
+import React, { useCallback, useEffect, useState } from "react";
+// import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
-import { Form } from "react-bootstrap";
-import InputGroup from 'react-bootstrap/InputGroup';
-import dasboardApi from "../../api/dashboardApi"
+// import DatePicker from "react-datepicker";
+// import { Form } from "react-bootstrap";
+// import InputGroup from 'react-bootstrap/InputGroup';
+// import dasboardApi from "../../api/dashboardApi"
 import downloadManual from "../../api/downloadmanualApi"
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
@@ -14,7 +14,8 @@ import moment from 'moment'
 const DownloadManual = () =>{
   const[filedata,setFileData] = useState([])
   const[exceldata,setExcelExport] = useState([])
-
+  const[fContent,setFContent] = useState([])
+  const[open,setOpen] = useState(false)
   const fileType =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
 //const filename = "downloadmanual"
@@ -35,12 +36,9 @@ const DownloadManual = () =>{
      
            console.log("getFileContent",data)
           // setExcelExport(data.recordset)
-           exportToCSV(data[0].FContent.data
-            ,data[0].FileName
-            )
-          
-          
-         
+          //  exportToCSV(data[0].FContent.data
+          //   ,data[0].FileName
+          //  )
           })
   }
 
@@ -55,11 +53,15 @@ const DownloadManual = () =>{
 
   useEffect(() =>{
     getFileData()
-   
-   
-   
   },[]
-  )
+)
+
+useEffect(()=>{
+  let handler = ()=>{
+    setOpen(false);
+  };
+  document.addEventListener("mousedown",handler);
+});
     return(
         <div className="batch">
      
@@ -94,11 +96,9 @@ const DownloadManual = () =>{
                 </thead>
                 <tbody>
                 {filedata.map((item) => (
-                <tr  
-              
-                >
-              <td>  <td><button onClick={()=>getFileContent(item.FileId)}
-              >
+                <tr>
+                
+              <td>  <td><button onClick={()=>getFileContent(item.FileId)}>
                 Download</button></td></td>
               <td>{item.Category}</td>
               <td>{item.FileName}</td>

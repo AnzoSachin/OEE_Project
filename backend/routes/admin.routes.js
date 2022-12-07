@@ -8,6 +8,7 @@ router.get("/linetype", admin.getLineType);
 router.get("/userrole", admin.getuserRole);
 router.get("/userlist", admin.getuserList);
 router.post("/addUser", admin.addUser);
+router.post("/updateUser",admin.updateUser);
 router.get("/allMachine", admin.allMachine);
 router.post("/saveMachine", admin.saveMachine);
 router.post("/updateMachine", admin.updateMachine);
@@ -20,7 +21,6 @@ router.get("/calendarshutdowndetails", admin.getShutDownDetails);
 router.get("/calendarshutdownreason", admin.getShutDownReason);
 router.get("/faultlist",admin.getfaultList);
 router.post("/faultlist",admin.getfaultList1);
-
 router.post("/addFault",admin.addFault);
 router.post("/updateFault",admin.updateFault);
 router.get("/machinedata", admin.machinedata);

@@ -1,18 +1,17 @@
-import axios from "axios"
+// import axios from "axios"
 let baseurl='http://localhost:5000/anzo/linestatus'
 
 
 const lineStatusApi = {
 
-    getBreakDownDetail: function(linecode) {
-        console.log("linecode",linecode)
+    getBreakDownDetail: function(data) {
+        console.log("data in api",data)
         return fetch(`${baseurl}/breakdowndetail`, {
             method: "POST",
             headers: {
-              "content-type": "application/json",
-              
+              "content-type": "application/json",  
             },
-            body: JSON.stringify(linecode),
+            body: JSON.stringify(data),
           })
     },
 
@@ -22,8 +21,7 @@ const lineStatusApi = {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            
-          },
+             },
           body: JSON.stringify(data),
         })
   },

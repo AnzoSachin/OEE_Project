@@ -1,15 +1,15 @@
-import React, { Component, useCallback, useEffect,useRef, useState } from "react";
+import React, { useCallback, useEffect,useRef, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Card, { CardHeader } from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Select from "react-select";
 import { Form } from "react-bootstrap";
 import { Table } from 'react-bootstrap';
 import dasboardApi from "../../api/dashboardApi"
 import ReportsApi from "../../api/reportsApi"
-import moment from 'moment'
-import { Line } from "react-chartjs-2";
+// import moment from 'moment'
+// import { Line } from "react-chartjs-2";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Chart } from "react-google-charts";
@@ -130,7 +130,7 @@ function DatewiseFugaiReport() {
           .then((res) => res.json())
           .then((data) => {
                          console.log("getRedTagWhiteTagStatusByEmp",data)
-            toast.info('Data fetch Successfully ')
+            // toast.info('Data fetch Successfully ')
             setRedTagWhiteTagStatusByEmp(data)
                //  setContainerSize(data.recordset)
               

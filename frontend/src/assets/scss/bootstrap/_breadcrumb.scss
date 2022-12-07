@@ -24,16 +24,20 @@
         @include hover-focus() { color: $az-color-primary; }
       }
 
-      &.active { color: $az-color-primary; }
+      &.active {
+        color: $az-color-primary;
+      }
 
-      + .breadcrumb-item::before { color: $gray-500; }
+      +.breadcrumb-item::before {
+        color: $gray-500;
+      }
     }
   }
 }
 
 .breadcrumb-style2,
 .breadcrumb-style3 {
-  .breadcrumb-item + .breadcrumb-item::before {
+  .breadcrumb-item+.breadcrumb-item::before {
     width: 16px;
     text-align: center;
     font-family: 'Ionicons';
@@ -41,9 +45,13 @@
 }
 
 .breadcrumb-style2 {
-  .breadcrumb-item + .breadcrumb-item::before { content: '\f3d1'; }
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: '\f3d1';
+  }
 }
 
 .breadcrumb-style3 {
-  .breadcrumb-item + .breadcrumb-item::before { content: '\f287'; }
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: '\f287';
+  }
 }

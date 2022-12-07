@@ -1,10 +1,9 @@
-
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
-import InputGroup from 'react-bootstrap/InputGroup';
+// import InputGroup from 'react-bootstrap/InputGroup';
 import dasboardApi from "../../api/dashboardApi"
 import ComplaintApi from "../../api/complaintApi"
 import * as FileSaver from "file-saver";
@@ -103,91 +102,16 @@ const ComplaintReport = () =>{
               console.log("allllllllll",data)
             data.length?  toast.info(`Status fetch Successfully`) : toast.info(`No data available for Current Inputs`)
               setCountData(data)
-           
-         
-          
-            })
-    }
-   
-    
         
-
-//         else if(lineFlag === true){
-//           let line = 'All'
-//           ComplaintApi.checkCount({line,machine,department,status,startdate,enddate})
-//           .then((res) => res.json())
-//           .then((data) => {
-           
-//                  console.log("response with allline",data)
-//                  setCountData(data)
-             
-              
-//                 })
-      
-//      }
-//      else if(machineFlag === true){
-//       ComplaintApi.checkCount({line,allmachines,department,status,startdate,enddate})
-//       .then((res) => res.json())
-//       .then((data) => {
-       
-//              console.log("response with all machine",data)
-//              setCountData()
-         
-          
-//             })
-  
-//  }   else if(departmentFlag=== true){
-//   ComplaintApi.checkCount({line,machine,alldepartment,status,startdate,enddate})
-//   .then((res) => res.json())
-//   .then((data) => {
-   
-//          console.log("response with all department",data)
-//          setCountData()
-     
-      
-//         })
-
-// }  else if(statusFlag=== true){
-//   ComplaintApi.checkCount({line,machine,department,allstatus,startdate,enddate})
-//   .then((res) => res.json())
-//   .then((data) => {
-   
-//          console.log("response with all status",data)
-//          setCountData()
-     
-      
-//         })
-
-// } else{
-//   ComplaintApi.checkCount({line,machine,department,status,startdate,enddate})
-//   .then((res) => res.json())
-//   .then((data) => {
-   
-//          console.log("response with no all",data)
-//          setCountData()
-     
-      
-//         })
-// }
-    
+            })
+    }  
   })
 
-  
-
-
- 
-
   const handleline = (value) =>{
-   
- 
-    setLine(value.value)
-   
-  
-   
+  setLine(value.value) 
 }
 
 const handlemachine = (label) => {
-  
   setMachine(label.value.toString())
  
 }
@@ -252,10 +176,7 @@ const excelExport = () =>{
 
   useEffect(() =>{
     getLineData()
-   
-  
     getMachineList()
-  
     getDepartmentList()
     getComplaintStatus()
   },[]
@@ -282,12 +203,7 @@ theme="light"
         <div className="card card-complaintsreport-one">
         <div className="card-header">
             <h7>Complaint</h7>
-        
-    
-                  
                   </div>
-                
-               
                 <div className="card-body">
                     <h4>Export Complaint Report </h4>
                  <div className="card card-complaintsreport-child">
@@ -529,34 +445,28 @@ theme="light"
                
                 <thead>
                   <tr>
-                    <th>LineCode</th>
                     <th>Department</th>
-                    <th>Tag</th>
-                    <th>Status</th>
-                    <th>Count</th>
-                    
-                   
+                    <th>EndDate</th>
+                    <th>Line</th>
+                    <th>Machine</th>
+                    <th>StartDate</th>
+                   <th>Status</th>
                     
                     
                   </tr>
                 </thead>
                 <tbody>
+                 
                 {countData.map((item) => (
                 <tr key={item._id}>
-              <td>{item.LineCode}</td> 
-              <td>{item.Department}</td>
-              <td>{item.Tag}</td>
-              <td>{item.Status}</td>
-              <td>{item.Count}</td>
+              <td>{item.department}</td> 
+              <td>{item.enddate}</td>
+              <td>{item.line}</td>
+              <td>{item.machine}</td>
+              <td>{item.startdate}</td>
+              <td>{item.status}</td>
          </tr>
           ))}
-                
-                
-                
-                
-                 
-                 
-                 
                 </tbody>
               </Table>
             </div>

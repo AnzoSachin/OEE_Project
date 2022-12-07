@@ -1,9 +1,11 @@
 
-import React, { Component, useCallback, useState ,useEffect} from "react";
+import React, { useCallback, useState ,useEffect} from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import AdminApi from '../../api/adminApi'
 
@@ -34,22 +36,31 @@ AdminApi.getUserRole()
       setUserList(res.data)
     })
       })
+    
 
       const addUser = useCallback(() =>{
         AdminApi.addUser({username,userid,userR,emailId,password,repassword,isactive})
         .then((res) => res.json())
         .then((data) => {
-         
-               console.log("addUser",data)
+          toast.info('User added successfully!');
+         console.log("addUser",data)
                getuserlist()
              //  setComplaintID(data.output.ComplaintID)
-           
              //  setComplaint(data.recordsets[2])
             //   this.setState({ pieChartData: data });
               })
-        
+      })
+      const updateUser = useCallback(() => {
+        AdminApi.updateUser({username,userid,userR,emailId,password,repassword,isactive})
+        .then((res) => res.json())
+        .then((data) => {
+         toast.info('Updated successfully!');
+               console.log("updateUser",data)
+               getuserlist()
+        })
       })
 
+      
       const handleUsername = (e) => {
        
         setUsername(e.target.value)
@@ -109,7 +120,7 @@ AdminApi.getUserRole()
   useEffect(() =>{
     getuserrole()
     getuserlist()
-   
+ 
    
   },[]
   )
@@ -117,7 +128,14 @@ AdminApi.getUserRole()
 
     return(
         <div className="batch">
-     
+     <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+theme="light"
+/>
+<ToastContainer/>
        
         <div className="card card-usermanagement-one">
         <div className="card-header">
@@ -266,7 +284,7 @@ AdminApi.getUserRole()
 
                     <button className="classbutton2"
                       onClick={(e) => {
-                        this.getAllData()
+                      updateUser()
                       }}
                     >
                      Update

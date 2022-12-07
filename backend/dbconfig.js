@@ -1,6 +1,6 @@
 const config = {
-    user :'sa',
-    password :'Sac@123',
+    user :'dj',
+    password :'dj@123',
     // password :'Vish@123',
    // server:'192.168.31.170',
      server:'localhost',

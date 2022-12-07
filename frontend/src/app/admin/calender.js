@@ -1,14 +1,16 @@
 
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import dasboardApi from "../../api/dashboardApi"
 import AdminApi from '../../api/adminApi'
 
-import ComplaintApi from "../../api/complaintApi"
+// import ComplaintApi from "../../api/complaintApi"
 
 const Calendar = () =>{
   const[linedata,setLineData] = useState([])
@@ -95,7 +97,7 @@ const Calendar = () =>{
       AdminApi.SaveCalendar({Action,alllines,allshift,report,reason,selectdate,comment,isactive})
     .then((res) => res.json())
     .then((data) => {
-     
+      toast.info('Calendar Updated Successfully!');
            console.log("response with all flag true",data)
            GetShutDownDetails()
            
@@ -107,7 +109,7 @@ const Calendar = () =>{
             AdminApi.SaveCalendar({Action,alllines,shift,report,reason,selectdate,comment,isactive})
           .then((res) => res.json())
           .then((data) => {
-           
+            toast.info('Calendar Updated Successfully!');
                  console.log("response with alllines",data)
                  GetShutDownDetails()
 
@@ -119,7 +121,7 @@ const Calendar = () =>{
         AdminApi.SaveCalendar({Action,line,allshift,report,reason,selectdate,comment,isactive})
       .then((res) => res.json())
       .then((data) => {
-       
+        toast.info('Calendar Updated Successfully!');
              console.log("response with all shift",data)
              GetShutDownDetails()
 
@@ -132,7 +134,7 @@ const Calendar = () =>{
     AdminApi.SaveCalendar({Action,line,shift,report,reason,selectdate,comment,isactive})
   .then((res) => res.json())
   .then((data) => {
-   
+    toast.info('Calendar Updated Successfully!');
          console.log("response with no all",data)
          GetShutDownDetails()
          
@@ -222,7 +224,13 @@ const handleallshift =(e) => {
     
                   
                   </div>
-                
+                  <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          theme="light"/>
+<ToastContainer />
                
                 <div className="card-body">
                     <h4>ShutDown Calendar  </h4>

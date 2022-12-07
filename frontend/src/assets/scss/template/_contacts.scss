@@ -3,13 +3,20 @@
 
 .az-content-body-show {
   @include media-breakpoint-only(md) {
-    .az-header-contacts .az-header-menu-icon { display: flex; }
-    .az-content-left-contacts { display: block; }
+    .az-header-contacts .az-header-menu-icon {
+      display: flex;
+    }
+
+    .az-content-left-contacts {
+      display: block;
+    }
   }
 }
 
 .az-content-contacts {
-  @include media-breakpoint-only(md) { height: calc(100vh - #{$az-height-header-mobile}); }
+  @include media-breakpoint-only(md) {
+    height: calc(100vh - #{$az-height-header-mobile});
+  }
 }
 
 .az-content-left-contacts {
@@ -25,7 +32,10 @@
   .az-content-breadcrumb,
   .az-content-title {
     padding-left: 20px;
-    @include media-breakpoint-up(lg) { padding-left: 0; }
+
+    @include media-breakpoint-up(lg) {
+      padding-left: 0;
+    }
   }
 }
 
@@ -47,7 +57,9 @@
   color: $gray-500;
   position: relative;
 
-  @include media-breakpoint-up(lg) { padding-left: 0; }
+  @include media-breakpoint-up(lg) {
+    padding-left: 0;
+  }
 
   &::after {
     content: '';
@@ -68,9 +80,11 @@
   position: relative;
   cursor: pointer;
 
-  @include media-breakpoint-up(lg) { padding: 10px 15px; }
+  @include media-breakpoint-up(lg) {
+    padding: 10px 15px;
+  }
 
-  + .az-contact-item {
+  +.az-contact-item {
     margin-top: -1px;
     border-top-color: transparent;
 
@@ -120,9 +134,13 @@
   font-size: 16px;
   color: $gray-500;
 
-  @include hover-focus() { color: $gray-600; }
+  @include hover-focus() {
+    color: $gray-600;
+  }
 
-  &.active { color: $yellow }
+  &.active {
+    color: $yellow
+  }
 }
 
 .az-content-body-contacts {
@@ -133,7 +151,9 @@
     overflow-y: auto;
   }
 
-  @include media-breakpoint-up(lg) { overflow: visible; }
+  @include media-breakpoint-up(lg) {
+    overflow: visible;
+  }
 }
 
 .az-contact-info-header {
@@ -143,7 +163,9 @@
   border-bottom: 1px solid $gray-300;
   position: relative;
 
-  @include media-breakpoint-up(sm) { padding-top: 0; }
+  @include media-breakpoint-up(sm) {
+    padding-top: 0;
+  }
 
   @include media-breakpoint-up(lg) {
     padding-left: 30px;
@@ -163,7 +185,9 @@
     width: 100px;
     height: 100px;
 
-    &::after { display: none; }
+    &::after {
+      display: none;
+    }
 
     a {
       position: absolute;
@@ -213,18 +237,25 @@
       color: $gray-600;
       font-size: 13px;
 
-      @include media-breakpoint-up(sm) { font-size: $font-size-base; }
+      @include media-breakpoint-up(sm) {
+        font-size: $font-size-base;
+      }
 
       i {
         font-size: 21px;
         line-height: 0;
         margin-right: 5px;
 
-        @include media-breakpoint-up(sm) { margin-right: 7px; }
+        @include media-breakpoint-up(sm) {
+          margin-right: 7px;
+        }
 
         &.typcn {
           line-height: .9;
-          &::before { width: auto; }
+
+          &::before {
+            width: auto;
+          }
         }
       }
 
@@ -232,9 +263,12 @@
         color: $az-color-secondary;
       }
 
-      + .nav-link {
+      +.nav-link {
         margin-left: 10px;
-        @include media-breakpoint-up(sm) { margin-left: 25px; }
+
+        @include media-breakpoint-up(sm) {
+          margin-left: 25px;
+        }
       }
     }
   }
@@ -256,7 +290,9 @@
     color: $gray-600;
     font-size: 12px;
 
-    @include hover-focus() { color: $az-color-secondary; }
+    @include hover-focus() {
+      color: $az-color-secondary;
+    }
 
     i {
       font-size: 21px;
@@ -264,7 +300,9 @@
       margin-right: 5px;
     }
 
-    + a { margin-left: 15px; }
+    +a {
+      margin-left: 15px;
+    }
   }
 }
 
@@ -279,14 +317,17 @@
 
   .media-list {
     padding: 20px 0;
-    @include media-breakpoint-up(lg) { padding: 25px 0; }
+
+    @include media-breakpoint-up(lg) {
+      padding: 25px 0;
+    }
   }
 
   .media {
     align-items: center;
     position: relative;
 
-    + .media {
+    +.media {
       margin-top: 30px;
 
       &::before {
@@ -299,7 +340,9 @@
       }
     }
 
-    &:last-child { margin-bottom: 15px; }
+    &:last-child {
+      margin-bottom: 15px;
+    }
   }
 
   .media-icon {
@@ -309,20 +352,29 @@
     width: 40px;
     text-align: center;
 
-    @include media-breakpoint-up(lg) { width: 100px; }
+    @include media-breakpoint-up(lg) {
+      width: 100px;
+    }
   }
 
   .media-body {
     margin-left: 30px;
 
-    @include media-breakpoint-up(lg) { display: flex; }
+    @include media-breakpoint-up(lg) {
+      display: flex;
+    }
 
-    > div {
-      @include media-breakpoint-up(lg) { flex: 1; }
+    >div {
+      @include media-breakpoint-up(lg) {
+        flex: 1;
+      }
 
-      + div {
+      +div {
         margin-top: 15px;
-        @include media-breakpoint-up(lg) { margin-top: 0; }
+
+        @include media-breakpoint-up(lg) {
+          margin-top: 0;
+        }
       }
     }
 

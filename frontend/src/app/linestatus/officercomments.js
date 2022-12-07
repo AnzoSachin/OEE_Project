@@ -1,8 +1,8 @@
 
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, {  useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
 import dasboardApi from "../../api/dashboardApi"
@@ -207,7 +207,7 @@ const OfficerComments = () =>{
                 </thead>
                 <tbody>
                 {officercommentData.map((item) => (
-                <tr key={item._id}>
+                <tr key={item.MachineDownTime}>
               <td>{item.Id}</td>
               <td>{  moment(item.MachineDownTime).format('YYYY-MM-DD HH:mm:ss')}</td>
               <td>{ moment(item.MachineUpTime).format('YYYY-MM-DD HH:mm:ss')}</td>
