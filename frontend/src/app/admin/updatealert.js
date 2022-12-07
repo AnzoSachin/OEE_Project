@@ -1,6 +1,6 @@
 
-import React, { Component, useEffect, useState,useCallback } from "react";
-import { Table } from 'react-bootstrap';
+import React, {  useEffect, useState,useCallback } from "react";
+// import { Table } from 'react-bootstrap';
 import AdminApi from '../../api/adminApi'
 import { Form } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';

@@ -59,42 +59,38 @@ const getComplaintStatus=async(req,res)=> {
     }
 }
 
-
 const getComplaintData = async(req,res) => {
-   
     let data = req.body
-    console.log("daaataaa",data)
+        // let machineid = toString(data.machine)
+        console.log("daaataaa",data)
     try {
         let pool = await sql.connect(config)
                await pool.request()
                .input("MachineCode",sql.NVarChar,data.line)
                .execute("spGetComplaintData")
                .then(result => {
-               console.log("getComplaintDataresult",result)
+               
                 res.json(result);
-    
-    
             })
-        
-    } catch (error) {
+        }catch (error) {
         console.log(error)
     }
-    }
+}
+
+
 
     const insertComplaintData = async(req,res) => {
-   
         let data = req.body
-       let machineid = toString(data.machine)
-       
+        // let machineid = toString(data.machine)
         console.log("daaataaa",data)
         try {
             let pool = await sql.connect(config)
                    await pool.request()
-                   .output("ComplaintID",sql.BigInt,)
-                   .input("LineCode",sql.NVarChar,data.line)
+                   .output("ComplaintID",sql.BigInt,data.complaintid)
+                   .input("LineCode",sql.NVarChar,data.linecode)
                    .input("MachineId",sql.NVarChar,data.machineid)
                    .input("DepartmentKey",sql.NVarChar,data.department)
-                   .input("UserId",sql.NVarChar,data.user)
+                   .input("UserId",sql.NVarChar,data.userid)
                    .input("Tag",sql.NVarChar,data.tag)
                    .input("Comment",sql.NVarChar,data.comment)
                    .input("Status",sql.NVarChar,data.status)
@@ -103,19 +99,13 @@ const getComplaintData = async(req,res) => {
                    .then(result => {
                    
                     res.json(result);
-        
-        
                 })
-      
-             
-            
-        } catch (error) {
+            }catch (error) {
             console.log(error)
         }
-        }
+    }
 
         const saveComplaintData = async(req,res) => {
-   
             let data = req.body
            let machineid = toString(data.machine)
            
@@ -123,94 +113,54 @@ const getComplaintData = async(req,res) => {
             try {
                 let pool = await sql.connect(config)
                        await pool.request()
-                     
-                       .input("LineCode",sql.NVarChar,data.line)
+                       .output("ComplaintID",sql.BigInt,data.complaintid)
+                       .input("LineCode",sql.NVarChar,data.linecode)
                        .input("MachineId",sql.NVarChar,data.machineid)
-                       .input("DepartmentKey",sql.NVarChar,data.department)
-                       .input("UserId",sql.NVarChar,data.user)
+                       .input("DepartmentKey",sql.NVarChar,data.departmentkey)
+                       .input("UserId",sql.NVarChar,data.userid)
                        .input("Tag",sql.NVarChar,data.tag)
                        .input("Comment",sql.NVarChar,data.comment)
                        .input("Status",sql.NVarChar,data.status)
                        .input("Comments",sql.NVarChar,data.comments)
-                       .input("ComplaintID",sql.NVarChar,data.complaintID)
+                    //    .input("ComplaintID",sql.NVarChar,data.complaintID)
                        .execute("spInsertComplaints")
                        .then(result => {
                        
                         res.json(result);
-            
-            
-                    })
-          
-                 
-                
+                    })   
             } catch (error) {
                 console.log(error)
             }
             }
-        
-    // const getComplaintId = async(req,res) => {
-   
-    //     let data = req.body
-    //    let machineid = toString(data.machine)
-    //    let cmId = ""
-    //     console.log("daaataaa",data)
-    //     try {
-    //         let pool = await sql.connect(config)
-    //                await pool.request()
-    //                .output("ComplaintID",sql.BigInt,cmId)
-                 
-    //                .execute("spInsertComplaints")
-    //                .then(result => {
-                   
-    //                 res.json(result);
-        
-        
-    //             })
-      
-               
-            
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //     }
+     
 
 
     const exportComplaintData = async(req,res) => {
-   
         let data = req.body
         console.log("exportComplaintData",data)
-       //   let machineid = data.machine.toString()
-     
-      
         try {
             let pool = await sql.connect(config)
                    await pool.request()
                  
-                   .input("LineCode",sql.NVarChar,data.line)
-                   .input("MachineId",sql.NVarChar,data.machine)
-                   .input("DepartmentKey",sql.NVarChar,data.department)
+                   .input("LineCode",sql.NVarChar,data.linecode)
+                   .input("MachineId",sql.NVarChar,data.machineid)
+                   .input("DepartmentKey",sql.NVarChar,data.departmentkey)
                    .input("Status",sql.NVarChar,data.status)
-                   .input("StartDate",sql.NVarChar,data.startdate)
-                   .input("EndDate",sql.NVarChar,data.enddate)
+                   .input("StartDate",sql.DateTime,data.startdate)
+                   .input("EndDate",sql.DateTime,data.enddate)
                    .execute("spExportComplaints")
                    .then(result => {
-                   
-                    res.json(result.recordsets[1]);
-        
-        
-                })
-      
-             
-            
+                    res.json(result.recordsets);
+                }) 
         } catch (error) {
             console.log(error)
         }
         }
 
+
 module.exports = {
     getUserList,
-    getMachineList,
-    
+    getMachineList, 
     getComplaintData,
     getDepartmentList,
     saveComplaintData,

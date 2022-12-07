@@ -56,7 +56,9 @@
     @include border-radius(100%);
   }
 
-  &.online::after { background-color: $green; }
+  &.online::after {
+    background-color: $green;
+  }
 }
 
 .avatar-xs {

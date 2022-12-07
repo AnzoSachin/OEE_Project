@@ -1,9 +1,9 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
-import { Doughnut } from "react-chartjs-2";
+// import { Doughnut } from "react-chartjs-2";
 import dasboardApi from "../../api/dashboardApi";
 //import "../../assets/scss/template/plantdashboard"
 
@@ -121,7 +121,7 @@ export class PlantDasboard extends Component {
                       
                           value={this.state.selectedBlock.value}
                           options={[
-                            ... block.map((ele) => {
+... block.map((ele) => {
                               return {
                                 value: ele.BlockKey,
                                 label: ele.BlockName,

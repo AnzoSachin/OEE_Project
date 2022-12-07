@@ -4,7 +4,9 @@
   .card {
     border-width: 0;
 
-    + .card { margin-top: 1px; }
+    +.card {
+      margin-top: 1px;
+    }
   }
 
   .card-header {
@@ -49,7 +51,15 @@
 }
 
 // Accordion Color Variant
-.accordion-indigo { @include accordion-variant($indigo); }
+.accordion-indigo {
+  @include accordion-variant($indigo);
+}
+
 .accordion-blue { @include accordion-variant($blue); }
-.accordion-dark { @include accordion-variant($gray-900); }
-.accordion-gray { @include accordion-variant($gray-600); }
+.accordion-dark {
+  @include accordion-variant($gray-900);
+}
+
+.accordion-gray {
+  @include accordion-variant($gray-600);
+}

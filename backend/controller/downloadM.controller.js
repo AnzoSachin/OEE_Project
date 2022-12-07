@@ -7,8 +7,8 @@ const getFileData = async(req,res) =>{
         let line = await pool.request()
                       .execute('spGetFile')
         let data=line.recordsets;
-        
-        res.json(data[0]);
+           console.log("datadata",line)
+        res.json(data);
     }
     catch (error) {
         console.log(error);

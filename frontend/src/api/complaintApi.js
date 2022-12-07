@@ -84,7 +84,7 @@ const ComplaintApi = {
       } ,
 
       checkCount:function(data) {
-        console.log("checkount",data)
+        console.log("checkcount",data)
         return fetch(`${baseurl}/exportcomplaint`, {
             method: "POST",
             headers: {

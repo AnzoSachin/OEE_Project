@@ -29,8 +29,8 @@
     height: $az-height-header;
   }
 
-  > .container,
-  > .container-fluid {
+  >.container,
+  >.container-fluid {
     height: 100%;
     display: flex;
     align-items: center;
@@ -44,10 +44,11 @@
     }
   }
 
-  > .container {
+  >.container {
     @include media-breakpoint-up(lg) {
       padding: 0;
     }
+
     @include media-breakpoint-down(md) {
       max-width: none;
     }
@@ -55,6 +56,7 @@
 
   .az-header-left .az-logo {
     display: none;
+
     @include media-breakpoint-up(lg) {
       display: flex;
     }
@@ -136,6 +138,7 @@
     &::before {
       top: -6px;
     }
+
     &::after {
       bottom: -6px;
     }
@@ -165,21 +168,28 @@
     overflow-y: visible;
     transform: none;
     z-index: auto;
-    > .nav {
+
+    >.nav {
       .nav-item {
         display: flex;
         align-self: stretch;
+
         &.dropdown {
           position: static;
         }
+
         &.dropdown-mega {
           position: static;
+        }
+        .dropdown-item:active{
+          background-color:#fff !important;
+          color: #8b3434 !important;
         }
       }
     }
   }
 
-  > .nav {
+  >.nav {
     flex-direction: column;
     padding: 20px;
 
@@ -219,7 +229,7 @@
       display: none;
     }
 
-    + .nav-item {
+    +.nav-item {
       margin-top: 10px;
 
       @include media-breakpoint-up(lg) {
@@ -228,7 +238,7 @@
       }
     }
 
-    > .nav-link {
+    >.nav-link {
       display: flex;
       align-items: center;
       position: relative;
@@ -244,6 +254,7 @@
       }
 
       @include hover() {
+
         color: $az-color-primary;
         i {
           color: $az-color-primary;
@@ -284,7 +295,7 @@
     }
 
     &.active {
-      > .nav-link {
+      >.nav-link {
         color: $az-color-primary;
         position: relative;
 
@@ -343,6 +354,7 @@
   margin-left: 32px;
   margin-top: 12px;
   display: none;
+
   @include media-breakpoint-down(md) {
     border: 0;
     position: static !important;
@@ -369,7 +381,7 @@
     display: block;
     color: $gray-700;
 
-    + .nav-link {
+    +.nav-link {
       margin-top: 6px;
       padding-top: 6px;
       border-top: 1px dotted $gray-200;
@@ -391,9 +403,7 @@
 }
 
 .az-menu-sub-mega {
-  top: calc(
-    #{$az-height-header} + 10px
-  ) !important; //Overrideing react-bootstrap inline css
+  top: calc(#{$az-height-header} + 10px) !important; //Overrideing react-bootstrap inline css
   left: 0 !important; //Overrideing react-bootstrap inline css
   right: 0 !important; //Overrideing react-bootstrap inline css
   transform: translate(0) !important; //Overrideing react-bootstrap inline css
@@ -407,13 +417,14 @@
     @include media-breakpoint-down(md) {
       max-width: none;
     }
+
     @include media-breakpoint-up(lg) {
       display: flex;
       background-color: #fff;
       border: 2px solid rgba($gray-900, 0.12);
     }
 
-    > div {
+    >div {
       @include media-breakpoint-up(lg) {
         display: flex;
         padding: 20px;
@@ -425,8 +436,9 @@
         padding: 20px 25px;
       }
 
-      + div {
+      +div {
         margin-top: 25px;
+
         @include media-breakpoint-up(lg) {
           margin-top: 0;
           border-left: 1px solid rgba($gray-900, 0.05);
@@ -443,7 +455,7 @@
       min-width: 140px;
     }
 
-    + .nav {
+    +.nav {
       border-top: 1px dotted $gray-200;
       margin-top: 6px;
       padding-top: 6px;
@@ -460,7 +472,7 @@
       }
     }
 
-    > span {
+    >span {
       display: block;
       text-transform: uppercase;
       font-size: 10px;
@@ -503,7 +515,7 @@
       border-color: $gray-400;
       box-shadow: none !important;
 
-      + .btn {
+      +.btn {
         color: $gray-600;
       }
     }
@@ -548,7 +560,7 @@
       line-height: 0;
     }
 
-    + .btn-social {
+    +.btn-social {
       margin-left: 10px;
     }
   }
@@ -599,7 +611,7 @@
 .az-header-notification {
   position: relative;
 
-  > a {
+  >a {
     display: block;
     font-size: 24px;
     color: $gray-900;
@@ -625,7 +637,7 @@
 .az-header-notification {
   margin-left: 15px;
 
-  > a {
+  >a {
     &.new {
       &::after {
         content: "";
@@ -693,7 +705,7 @@
   }
 
   &.show {
-    > a::after {
+    >a::after {
       @include media-breakpoint-up(sm) {
         display: block;
       }
@@ -723,7 +735,7 @@
     padding: 10px 0;
     position: relative;
 
-    + .media {
+    +.media {
       border-top: 1px dotted $gray-400;
     }
 
@@ -762,6 +774,7 @@
     strong {
       font-weight: $font-weight;
     }
+
     span {
       display: block;
       font-size: 11px;
@@ -774,7 +787,7 @@
   position: relative;
   margin-left: 15px;
 
-  > .az-img-user {
+  >.az-img-user {
     outline: none;
     width: 32px;
     height: 32px;
@@ -861,7 +874,7 @@
       color: $az-color-primary;
     }
 
-    + .dropdown-item {
+    +.dropdown-item {
       border-top: 1px dotted $gray-400;
     }
 
@@ -876,6 +889,7 @@
         display: block;
       }
     }
+
     .dropdown-menu {
       display: block;
     }
@@ -927,4 +941,10 @@
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.nav-item>.dropdown-item:active {
+  background-color: rgb(36, 95, 36);
+  color: #2f3;
+  text-decoration: none !important;
 }

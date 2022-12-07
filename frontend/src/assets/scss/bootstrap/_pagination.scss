@@ -1,10 +1,15 @@
 /* ###### 3.14 Pagination ###### */
 
 .page-item {
-  &:first-child .page-link,
-  &:last-child .page-link { border-radius: 0; }
 
-  + .page-item { margin-left: 1px; }
+  &:first-child .page-link,
+  &:last-child .page-link {
+    border-radius: 0;
+  }
+
+  +.page-item {
+    margin-left: 1px;
+  }
 
   &.active .page-link { background-color: $az-color-primary; }
 }
@@ -41,12 +46,14 @@
         color: #fff;
       }
     }
+
     &.disabled {
       .page-link {
         background-color: inherit;
       }
     }
   }
+
   .page-link {
     font-weight: 400;
     background-color: rgba(#fff, .05);
@@ -73,11 +80,15 @@
 
 .pagination-circled {
   .page-item {
-    + .page-item { margin-left: 5px; }
+    +.page-item {
+      margin-left: 5px;
+    }
 
     &:first-child,
     &:last-child {
-      .page-link { @include border-radius(100%); }
+      .page-link {
+        @include border-radius(100%);
+      }
     }
   }
 

@@ -100,6 +100,7 @@ const getuserList=async(req,res)=> {
         console.log(error);
     }
 }
+
 const getFileCategoryList=async(req,res)=> {
     try {
         let pool = await sql.connect(config);
@@ -146,7 +147,38 @@ const addUser = async(req,res) => {
     }
     }
 
-    
+    const updateUser = async(req,res) => {
+   
+        let data = req.body
+      
+     
+        console.log("updateUser",data)
+        try {
+            let pool = await sql.connect(config)
+                   await pool.request()
+                 
+                   .input("UserName",sql.NVarChar,data.username)
+                   .input("UserId",sql.NVarChar,data.userid)
+                   .input("Pass",sql.NVarChar,data.password)
+                   .input("Role",sql.NVarChar,data.userR)
+                   .input("EmailId",sql.NVarChar,data.emailId)
+                   .input("IsActive",sql.NVarChar,data.isactive)
+                   .output("ErrorMsg",sql.NVarChar,)
+                   .execute("spAddUser")
+                   .then(result => {
+                   
+                    res.json(result);
+        
+        
+                })
+      
+             
+            
+        } catch (error) {
+            console.log(error)
+        }
+        }
+
 const saveCalendar = async(req,res) => {
    
     let data = req.body
@@ -190,10 +222,10 @@ const saveCalendar = async(req,res) => {
         let fileEx = '.xlsx'
     let file  = req.files
     console.log("filesss",file)
-    console.log("fileSize",file.uloadFile.size)
-    console.log("filename",file.uloadFile.name)
-    console.log("mimetype",file.uloadFile.mimetype)
-    console.log("FileContent",file.uloadFile.data)
+    console.log("fileSize",file.uploadFile.size)
+    console.log("filename",file.uploadFile.name)
+    console.log("mimetype",file.uploadFile.mimetype)
+    console.log("FileContent",file.uploadFile.data)
          try {
             let pool = await sql.connect(config)
                    await pool.request()
@@ -495,6 +527,7 @@ const saveCalendar = async(req,res) => {
 module.exports = {
     
     addUser,
+    updateUser,
     addFault,
     getShift,
     UploadFile,
@@ -509,6 +542,7 @@ module.exports = {
     UploadFile1,
     getuserRole,
     getuserList,
+ 
     saveMachine,
     saveCalendar,
     updateMachine,

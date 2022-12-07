@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react'
+// import {Link} from 'react-router-dom'
 //import logo from "../../assets/images/anzologo.png"
 import logo from "../../assets/images/anzologo.png"
 import LoginApi from "../../api/loginApi"
