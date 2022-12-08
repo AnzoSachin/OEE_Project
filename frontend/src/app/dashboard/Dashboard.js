@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
-import { Doughnut } from "react-chartjs-2";
+// import { Doughnut } from "react-chartjs-2";
 import dasboardApi from "../../api/dashboardApi";
 import Chart from "react-google-charts"
 import FusionCharts from "fusioncharts";
@@ -14,8 +14,7 @@ import OEEAnalysis from "./OEEAnalysis"
 
 
 // const data = [
-  
-//   ["Task", "Hours per Day"],
+  //   ["Task", "Hours per Day"],
 //   ["Work", 11],
 //   ["Eat", 2],
 //   ["Commute", 2],
@@ -244,7 +243,7 @@ export class Dashboard extends Component {
     this.setState({ date: e.target.value });
   }
   getChartData(data) {
-    const{selectedLine,selectedShift,date} = this.state
+    const{selectedLine} = this.state
     dasboardApi.getChartData(data)
     .then((response) => {
       console.log("getChartData", response.data);
@@ -377,7 +376,7 @@ export class Dashboard extends Component {
   }
 
   render() {
-    const { lineData, shiftData,labelData } = this.state;
+    const { lineData, shiftData } = this.state;
     
    let Production = this.state.labelData.filter((value) =>{
   

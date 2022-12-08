@@ -1,8 +1,20 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import logo from "../../assets/images/anzologo.png"
+
 export class Header extends Component {
+  state = {
+    open:false,
+  };
+  handleButtonClick = () => {
+    this.setState((state) => {
+      return {
+        open: !state.open,
+      };
+    });
+  };
+
   closeMenu(e) {
     e.target.closest(".dropdown").classList.remove("show");
     e.target.closest(".dropdown .dropdown-menu").classList.remove("show");
@@ -20,6 +32,7 @@ export class Header extends Component {
   }
  
   render() {
+
     return (
       <div>
         <div className="az-header">
@@ -90,6 +103,7 @@ export class Header extends Component {
                     <i style = {{padding:"4px"}} class="fa-solid fa-bars-progress"></i> Line Status
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                       <Link
                         to="/linebreakdown"
                         className={
@@ -135,6 +149,7 @@ export class Header extends Component {
                         }
                       ><i style = {{padding:"4px"}}  class="fa-solid fa-user"></i> Officer comment
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -151,6 +166,7 @@ export class Header extends Component {
                     <i style = {{padding:"4px"}} class="fa-solid fa-book"></i>Complaints
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                       <Link
                         to="/bookcomplaint"
                         className={
@@ -169,6 +185,7 @@ export class Header extends Component {
                         }
                       ><i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i> Complaint Report
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -185,6 +202,7 @@ export class Header extends Component {
                     <i style = {{padding:"4px"}} class="fa-solid fa-layer-group"></i>Batch
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                       <Link
                         to="/batch"
                         className={
@@ -193,7 +211,9 @@ export class Header extends Component {
                             : "nav-link"
                         }
                       >  <i style = {{padding:"4px"}} class="fa-solid fa-layer-group"></i> Manage Batch
+                      
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -211,14 +231,13 @@ export class Header extends Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="az-menu-sub">
-                      <Dropdown
-                        
-                        >
+                      <Dropdown>
 
                       <Dropdown.Toggle as={"a"} className="nav-link with-sub">
                       <i style = {{padding:"4px"}} class="fa-solid fa-magnifying-glass-chart"></i>  Analysis
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                     <Dropdown.Item>
                     <Link
                         to="/breakdownanalysis"
                         className={
@@ -229,6 +248,7 @@ export class Header extends Component {
                         style = {{left:"100px"}}
                       >  <i style = {{padding:"4px"}} class="fa-solid fa-magnifying-glass-chart"></i> BreakDown Analysis
                       </Link>
+                    
                       <Link
                         to="/oeetrends"
                         className={
@@ -239,6 +259,7 @@ export class Header extends Component {
                         style = {{left:"100px"}}
                       ><i style = {{padding:"4px"}} class="fa-solid fa-chart-simple"></i>OEE Trends
                       </Link>
+                      
                       <Link
                         to="/breakdowntrend"
                         className={
@@ -248,22 +269,14 @@ export class Header extends Component {
                         }
                         style = {{left:"100px"}}
                       ><i style = {{padding:"4px"}} class="fa-solid fa-chart-pie"></i> BreakDown Trends
+                     
                       </Link>
-
+                      </Dropdown.Item>
                     </Dropdown.Menu>
 
                       </Dropdown>
-                      {/* <Link
-                        to="/general-pages/signin"
-                        className={
-                          this.isPathActive("/general-pages/signin")
-                            ? "nav-link active"
-                            : "nav-link"
-                        }
-                      >
-                        Analysis
-                      </Link> */}
-
+                     
+<Dropdown.Item>
                       <Link
                         to="/general-pages/signin"
                         className={
@@ -274,7 +287,7 @@ export class Header extends Component {
                         style = {{marginTop:"6px",paddingTop:"6px" }}
                       > <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i> WhyWhy Report
                       </Link>
-
+                      </Dropdown.Item>
 
 
 
@@ -285,6 +298,7 @@ export class Header extends Component {
                        <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>Fugai Report
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                     <Link
                         to="/employewisefugaireport"
                         className={
@@ -305,24 +319,15 @@ export class Header extends Component {
                       >
                       <i style = {{padding:"4px"}}  class="fa-solid fa-database"></i>  Data Wise
                       </Link>
-
+                      </Dropdown.Item>
                     </Dropdown.Menu>
-                      
-
-
-                       </Dropdown>
-
-
-
-                     
-
-
-
+                      </Dropdown>
                            <Dropdown>
                            <Dropdown.Toggle as={"a"} className="nav-link with-sub"  style = {{marginTop:"6px",paddingTop:"6px" }}>
                            <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>  OEE Report
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                     <Link
                         to="/general-pages/signin"
                         className={
@@ -345,18 +350,16 @@ export class Header extends Component {
                       >
                      <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>   Line Daily Report
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
 
                            </Dropdown>
-
-
-
-                   
                          <Dropdown>
                          <Dropdown.Toggle as={"a"} className="nav-link with-sub"  style = {{marginTop:"6px",paddingTop:"6px" }}>
                          <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>    OEE Plant Report
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                     <Link
                         to="/general-pages/signin"
                         className={
@@ -390,19 +393,15 @@ export class Header extends Component {
                       >
                       <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>  Plant Daily Report
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                          </Dropdown>
-
-
-
-
-                     
-
                        <Dropdown>
                        <Dropdown.Toggle as={"a"} className="nav-link with-sub"  style = {{marginTop:"6px",paddingTop:"6px" }}>
                        <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>   OEE Block Report
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                     <Link
                         to="/general-pages/signin"
                         className={
@@ -413,25 +412,11 @@ export class Header extends Component {
                        
                       >
                     <i style = {{padding:"4px"}} class="fa-solid fa-pen-to-square"></i>    Block Report
+                  
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                        </Dropdown>
-
-                     
-
-
-
-                      {/* <Link
-                        to="/general-pages/signin"
-                        className={
-                          this.isPathActive("/general-pages/signin")
-                            ? "nav-link active"
-                            : "nav-link"
-                        }
-                        style = {{marginTop:"6px",paddingTop:"6px" }}
-                      >
-                        OEE Block Report
-                      </Link> */}
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -448,6 +433,7 @@ export class Header extends Component {
                     <i style = {{padding:"4px"}} class="fa-solid fa-user"></i>Admin
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                       <Link
                         to="/usermanagement"
                         className={
@@ -504,6 +490,7 @@ export class Header extends Component {
                         }
                       ><i style = {{padding:"4px"}} class="fa-solid fa-upload"></i>Upload File
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -517,9 +504,12 @@ export class Header extends Component {
                     }
                   >
                     <Dropdown.Toggle as={"a"} className="nav-link with-sub">
+                   {/* onClick{()=> setOpen(false)} */}
+
                     <i style={{padding:"4px"}} class="fa-solid fa-book-open"></i>Learning
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="az-menu-sub">
+                      <Dropdown.Item>
                       <Link
                         to="downloadmanual"
                         className={
@@ -529,6 +519,7 @@ export class Header extends Component {
                         }
                       ><i style={{padding:"4px"}} class="fa-solid fa-download"></i> Download Manual
                       </Link>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>

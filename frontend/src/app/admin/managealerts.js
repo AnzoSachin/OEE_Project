@@ -1,5 +1,5 @@
 
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from 'react-bootstrap';
 import AdminApi from '../../api/adminApi'
 import UpdateAlerts from './updatealert'

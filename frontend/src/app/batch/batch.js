@@ -1,15 +1,15 @@
 
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
 import dasboardApi from "../../api/dashboardApi"
 import BatchApi from "../../api/batchApi"
 import UpdateBatch from "./updatebatch"
 import StopB from "./stopbatch"
-import timepicker from 'react-time-picker';
+// import timepicker from 'react-time-picker';
 import Spinner from 'react-bootstrap/Spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -111,7 +111,7 @@ const Batch = () =>{
     setSetLoader(true)
     let BatchStartTime = datetime+" "+time
   
-   BatchApi.addBatch({line,container,batchNo,sku,BatchStartTime,poNo,pgl,product,mixer})
+   BatchApi.addBatch({line,container,batchNo,sku,BatchStartTime,poNo,product,mixer})
      .then((res) => {
     
         

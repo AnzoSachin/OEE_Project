@@ -1,8 +1,7 @@
-
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
 import dasboardApi from "../../api/dashboardApi"
@@ -10,6 +9,7 @@ import ComplaintApi from "../../api/complaintApi"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment'
+
 
 
 const BookComplaint = () =>{
@@ -33,7 +33,7 @@ const BookComplaint = () =>{
   const[machinedata,setMachineData] = useState([])
   const[complaintdata,setComplaintData] = useState([])
   const[deparmentdata,setDepartmentData] = useState([])
- 
+  const[insertdata,setInsertData] = useState([]) 
  
 
 
@@ -51,18 +51,14 @@ const BookComplaint = () =>{
     .then((res)=>{
       console.log("getDepartmentList",res.data)
       setDepartmentData(res.data)
-     
-    })
-    
+     })
   })
   const getUserList = useCallback(()=>{
     ComplaintApi.getUserList()
     .then((res)=>{
       console.log("getUserList",res.data)
       setUserData(res.data)
-     
-    })
-    
+      })
   })
 
   const getMachineList = useCallback(()=>{
@@ -70,9 +66,7 @@ const BookComplaint = () =>{
     .then((res)=>{
       console.log("getMachineList",res.data)
       setMachineData(res.data)
-     
-    })
-    
+    })  
   })
 
   const getComplaintStatus = useCallback(()=>{
@@ -81,73 +75,53 @@ const BookComplaint = () =>{
       console.log("getComplaintStatus",res.data)
       setComplaintData(res.data)
      // setMachineData(res.data)
-     
-    })
-    
+      }) 
   })
   const getComplaintData = useCallback(()=>{
-    let icn=0
-    console.log("jhghj",icn++)
-    ComplaintApi.getComplaintData({line})
-    .then((res) => res.json())
-    .then((data) => {
-     
-           console.log("getComplaintData",data.recordsets[2])
-           setComplaint(data.recordsets[2])
-      
+    // let icn=0
+    // console.log("jhghj",icn++)
+    ComplaintApi.getComplaintData({})
+    // .then((res) => res.json())
+    // .then((data) => {
+      .then((res) => {
+          console.log("getComplainData",res.data)
+          setComplaint(res.data)
           })
-    
   })
   const insertComplaint = useCallback(()=>{
-  
-  
     let comments = user+status+comment+today
     ComplaintApi.saveComplaintData({line,machine,user,department,tag,comment,status,comments,complaintID})
     .then((res) => res.json())
     .then((data) => {
                      toast.info(`Complaint created with complaintid ${complaintID}`)
+                     console.log("insert",data)
                      getComplaintData()
-        
-          
-      
-          })
-    
+          }) 
   })
 
-  const SaveAllData = useCallback(()=>{
-    let comments = user+status+comment+today
-  
-     
-        ComplaintApi.insertComplaintData({line,machine,user,department,tag,comment,status,comments})
-        .then((res) => res.json())
-        .then((data) => {
-           toast.info(`Complaint Register successfully with complaintid: ${data.output.ComplaintID}`)
-           getComplaintData()
-          
-          
-              })
-       
-     
-    
-   
-   
- })
+//   const SaveAllData = useCallback(()=>{
+//     let comments = user+status+comment+today;
+//         ComplaintApi.insertComplaintData({line,machine,user,department,tag,comment,status,comments})
+//         .then((res) => {
+//           toast.info('Complaint Register successfully');
+//           console.log("saveComplaint",res)
+//        getComplaintData()
+//           })  
+//  })
 
-  const handleline = (value) =>{
-   
+  const handleline = useCallback((value) =>{
   let line = value.value
     setLine(value.value)
     ComplaintApi.getComplaintData({line})
-    .then((res) => res.json())
-    .then((data) => {
-     
-            console.log("commmmmmm",data.recordsets[2])
-           setComplaint(data.recordsets[2])
-          
-     
+    // .then((res) => res.json())
+    // .then((data) => {
+      .then((res)=>{
+            // console.log("commmmmmm",data.recordsets[2])
+            console.log("commm",res.data)
+          //  setComplaint(data.recordsets[2])
+setComplaint(res.data)
           })
-   
-}
+})
 
 const handlemachine = (label) => {
   
@@ -195,6 +169,7 @@ const handlewhitetag = (e) => {
     getUserList()
     getMachineList()
     getComplaintData()
+   // insertComplaint()
     getDepartmentList()
     getComplaintStatus()
   },[line]
@@ -373,20 +348,10 @@ theme="light"
                       />
                       </div>
                       </div>
-
-                      
-                      
-                  
                     <button className="classbutton"
-                      onClick={(e) => {
-                        SaveAllData()
-                      }}
-                    >
+                      onClick={() => {insertComplaint()}}>
                       Save
                     </button>
-
-                   
-
                     </div>
                     <div className="card-body">
                     <div className="table-responsive">
@@ -394,50 +359,49 @@ theme="light"
                
                 <thead>
                   <tr>
-                    <th>Complaint Id</th>
-                    <th>Line</th>
-                     <th>Tag</th>
-                    <th>Status</th>
-                    <th>Complaint Date</th>
-                   
-                    
-                    
+                    <th>Comment</th> 
+                     <th>Comments</th> 
+                      {/* <th>ComplaintID</th>   */}
+                      <th>Department</th>
+                    <th>Line</th> 
+                    <th>Machine</th>
+                   <th>Status</th>
+                   <th>Tag</th>
+                   <th>User</th>
+                   {/* <th>Id</th>
+                   <th>UserName</th> */}
                   </tr>
                 </thead>
                 <tbody>
-                {complaint.map((item) => (
+                {complaintdata.map((item) => (
                 <tr key={item._id}>
-              <td>{item.ComplaintID}</td> 
-              <td>{item.Line}</td>
-              <td>{item.Tag}</td>
-              <td>{item.Status}</td>
-              <td>{moment(item.ComplaintDate).format('YYYY-MM-DD HH:mm:ss')}</td>
+               <td>{item.comment}</td>  
+               <td>{item.comments}</td> 
+               {/* <td>{item.complaintid}</td>  */}
+               <td>{item.department}</td>
+              <td>{item.line}</td>
+              <td>{item.machine}</td>
+              <td>{item.status}</td>
+              <td>{item.tag}</td> 
+              <td>{item.User}</td>
+             
+              {/* <td>{item.UserName}</td> */}
+
+              {/* <td>{item.comment}</td>
+              <td>{item.status}</td> */}
+              {/* <td>{item.Status}</td> */}
+              {/* <td>{moment(item.ComplaintDate).format('YYYY-MM-DD HH:mm:ss')}</td> */}
          </tr>
-          ))}
-                
-                
-                
-                
-                 
-                 
-                 
+          ))} 
                 </tbody>
               </Table>
             </div>
-                        
                     </div>
-
-                 </div>
-                 
-
-                  
+                 </div>        
                 </div>
                 {/* card-body */}
               </div>
     </div>
-
-
     )
 }
-
 export default BookComplaint

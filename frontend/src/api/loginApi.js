@@ -1,4 +1,4 @@
-import axios from "axios"
+// import axios from "axios"
 let baseurl='http://localhost:5000/anzo/login'
 
 const LoginApi = {

@@ -1,8 +1,8 @@
 
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, {  useCallback, useEffect, useState } from "react";
 import Select from "react-select";
 import { Table } from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Form } from "react-bootstrap";
 import dasboardApi from "../../api/dashboardApi"
 import lineStatusApi from "../../api/lineStatusApi"
@@ -46,8 +46,7 @@ const PreviousLineBreakDown = () =>{
     lineStatusApi.getPreviousBreakDownDetail({startdate,enddate,line})
     .then((res) => res.json())
     .then((data) => {
-     
-           console.log("res",data)
+       console.log("res",data)
            setGetPreviousBreadkDowndetail(data.recordset)
          
           })
@@ -161,7 +160,7 @@ const PreviousLineBreakDown = () =>{
                <tbody>
 
                {previousbreakdowndetail.map((item) => (
-                <tr key={item._id}>
+                <tr key={item.MachineDownTime}>
               <td>{item.Id}</td>
               <td>{moment(item.MachineUpTime).format('YYYY-MM-DD HH:mm:ss')}</td>
               <td>{moment(item.MachineDownTime).format('YYYY-MM-DD HH:mm:ss')}</td>
@@ -171,11 +170,7 @@ const PreviousLineBreakDown = () =>{
               <td>{item.SAPNotify}</td>
               <td>{item.UserName}</td>
               <td>{moment(item.InputTime).format('YYYY-MM-DD HH:mm:ss')}</td>
-             
-
-              
-              
-             
+      
              
             </tr>
           ))}

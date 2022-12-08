@@ -1,7 +1,9 @@
 /* ###### 4.8 Nav   ###### */
 
 .az-nav {
-  @include media-breakpoint-up(md) { align-items: center; }
+  @include media-breakpoint-up(md) {
+    align-items: center;
+  }
 
   .nav-link {
     display: block;
@@ -14,19 +16,19 @@
       color: $gray-900;
     }
 
-    + .nav-link {
-        padding-top: 12px;
-        margin-top: 12px;
-        border-top: 1px dotted $gray-500;
+    +.nav-link {
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px dotted $gray-500;
 
-        @include media-breakpoint-up(md) {
-          padding-top: 0;
-          margin-top: 0;
-          border-top: 0;
-          padding-left: 15px;
-          margin-left: 15px;
-          border-left: 1px dotted $gray-500;
-        }
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+        margin-top: 0;
+        border-top: 0;
+        padding-left: 15px;
+        margin-left: 15px;
+        border-left: 1px dotted $gray-500;
+      }
     }
 
     &.active { color: $az-color-primary; }
@@ -52,9 +54,13 @@
       text-align: center;
       @include transition($transition-base);
 
-      &:not([class*=' tx-']) { color: $gray-600; }
+      &:not([class*=' tx-']) {
+        color: $gray-600;
+      }
 
-      &.typcn { line-height: .9; }
+      &.typcn {
+        line-height: .9;
+      }
     }
 
     span {
@@ -67,7 +73,10 @@
     &:hover,
     &:focus {
       color: $gray-900;
-      i:not([class*=' tx-']) { color: $gray-900; }
+
+      i:not([class*=' tx-']) {
+        color: $gray-900;
+      }
     }
 
     &.active {
@@ -89,11 +98,16 @@
       &:hover,
       &:focus {
         color: $indigo;
-        i { color: $indigo; }
+
+        i {
+          color: $indigo;
+        }
       }
     }
 
-    + .nav-link { border-top: 1px dotted $gray-400; }
+    +.nav-link {
+      border-top: 1px dotted $gray-400;
+    }
   }
 
   &.sm {
@@ -102,7 +116,9 @@
       font-weight: 400;
       padding: 10px 0;
 
-      i { font-size: 21px; }
+      i {
+        font-size: 21px;
+      }
     }
   }
 }
@@ -110,17 +126,28 @@
 .az-nav-dark {
   .nav-link {
     color: rgba(#fff, .7);
-    @include hover-focus() { color: #fff; }
 
-    + .nav-link { border-color: $gray-700; }
+    @include hover-focus() {
+      color: #fff;
+    }
+
+    +.nav-link {
+      border-color: $gray-700;
+    }
+
     &.active { color: $az-color-primary; }
   }
 }
 
 .az-nav-colored-bg {
   .nav-link {
-    + .nav-link { border-color: rgba(#fff, .4); }
-    &.active { color: #fff; }
+    +.nav-link {
+      border-color: rgba(#fff, .4);
+    }
+
+    &.active {
+      color: #fff;
+    }
   }
 }
 
@@ -132,9 +159,11 @@
     color: $gray-700;
     position: relative;
 
-    @include hover-focus() { color: $gray-900; }
+    @include hover-focus() {
+      color: $gray-900;
+    }
 
-    + .nav-link {
+    +.nav-link {
       margin-top: 15px;
 
       @include media-breakpoint-up(md) {
@@ -170,11 +199,17 @@
   &.az-nav-dark {
     .nav-link {
       color: rgba(#fff, .7);
-      @include hover-focus() { color: #fff; }
+
+      @include hover-focus() {
+        color: #fff;
+      }
 
       &.active {
         color: #fff;
-        &::before { background-color: #fff; }
+
+        &::before {
+          background-color: #fff;
+        }
       }
     }
   }
@@ -190,10 +225,12 @@
     padding-right: 35px;
   }
 
-  .lSSlideWrapper { overflow: visible; }
+  .lSSlideWrapper {
+    overflow: visible;
+  }
 
   .lSAction {
-    > a {
+    >a {
       display: block;
       height: 40px;
       top: 16px;
@@ -201,7 +238,9 @@
       background-color: $gray-400;
       background-image: none;
 
-      @include hover-focus() { background-color: darken($gray-400, 5%); }
+      @include hover-focus() {
+        background-color: darken($gray-400, 5%);
+      }
 
       &::before {
         font-family: 'Ionicons';
@@ -218,12 +257,18 @@
 
       &.lSPrev {
         left: -32px;
-        &::before { content: '\f3cf'; }
+
+        &::before {
+          content: '\f3cf';
+        }
       }
 
       &.lSNext {
         right: -35px;
-        &::before { content: '\f3d1'; }
+
+        &::before {
+          content: '\f3d1';
+        }
       }
 
       &.disabled {
@@ -233,7 +278,9 @@
     }
   }
 
-  .lightSlider { display: flex; }
+  .lightSlider {
+    display: flex;
+  }
 
   .tab-item {
     flex-shrink: 0;
@@ -252,7 +299,9 @@
     white-space: nowrap;
     background-color: $gray-200;
 
-    @include hover-focus() { background-color: $gray-100; }
+    @include hover-focus() {
+      background-color: $gray-100;
+    }
 
     &.active {
       background-color: #fff;
@@ -265,5 +314,13 @@
 .az-tab-pane {
   display: none;
 
-  &.active { display: block; }
+  &.active {
+    display: block;
+  }
+}
+
+.dropdown-item-active .dropdown-item:active {
+  background-color: none !important;
+  color: none !important;
+  text-decoration: none !important;
 }

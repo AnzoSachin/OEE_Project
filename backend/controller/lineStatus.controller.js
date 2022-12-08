@@ -2,38 +2,23 @@ var config = require('../dbconfig')
 const sql = require('mssql');
 
 const getBreakDownDetail = async(req,res) =>{
-    let code = req.body
-    
-    let machinecode = JSON.stringify(code.line)
-    console.log("machinecode",typeof(machinecode),typeof(code))
-    console.log("machinecode",machinecode)
-    // let code = req.body.
-   
-      try {
+    let data = req.body
+    console.log("daaata",data)
+  try {
         let pool = await sql.connect(config)
           await pool.request()
-          .input('MachineCode', sql.NVarChar, machinecode)
-          .execute('spGetBreakDowndetail')
+          .input("MachineCode", sql.NVarChar,data.machinecode)
+          .execute("spGetBreakDowndetail")
           .then(result => {
-            console.log("result",JSON.stringify(result))
-            res.json(result.recordsets[1]);
-
-
-        }
-        )
-        
-      } 
-      catch (error) {
-        console.log(error)
-        
-      }
-
-   
-}
+            console.log("result",result)
+            res.json(result);
+        })
+      } catch (error) {
+        console.log(error)  
+      }}
 
 const getPreviousBreakDownDetail = async(req,res) => {
-   
-let data = req.body
+   let data = req.body
 console.log("daaataaa",data)
 try {
     let pool = await sql.connect(config)
@@ -45,10 +30,7 @@ try {
            .then(result => {
             console.log("result",result)
             res.json(result);
-
-
-        })
-    
+})  
 } catch (error) {
     console.log(error)
 }

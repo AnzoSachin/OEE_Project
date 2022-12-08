@@ -69,6 +69,7 @@ const AdminApi = {
             }
           })
     },
+   
     getManagealert:function()
     {
         return  axios({
@@ -96,6 +97,20 @@ const AdminApi = {
    
             console.log("getComplaintData api",data)
             return fetch(`${baseurl}/addUser`, {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  
+                },
+                body: JSON.stringify(data),
+              })
+         
+    },
+    updateUser : function(data)
+    {
+   
+            console.log("getComplaintData api",data)
+            return fetch(`${baseurl}/updateUser`, {
                 method: "POST",
                 headers: {
                   "content-type": "application/json",

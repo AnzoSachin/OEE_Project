@@ -2,11 +2,21 @@
 
 .az-content-body-show {
   @include media-breakpoint-down(md) {
-    .az-header-menu-icon { display: none; }
-    .az-header-left .az-header-arrow { display: block; }
+    .az-header-menu-icon {
+      display: none;
+    }
 
-    .az-content-left-chat { display: none; }
-    .az-content-body-chat { display: flex; }
+    .az-header-left .az-header-arrow {
+      display: block;
+    }
+
+    .az-content-left-chat {
+      display: none;
+    }
+
+    .az-content-body-chat {
+      display: flex;
+    }
   }
 }
 
@@ -30,7 +40,9 @@
   flex-direction: row;
   padding-left: 20px;
 
-  @include media-breakpoint-up(lg) { padding-left: 0; }
+  @include media-breakpoint-up(lg) {
+    padding-left: 0;
+  }
 
   .nav-link {
     font-size: 13px;
@@ -40,15 +52,18 @@
 
     &:hover,
     &:focus,
-    &:active { outline: none; }
+    &:active {
+      outline: none;
+    }
 
-    + .nav-link {
+    +.nav-link {
       margin-top: 0;
       margin-left: 30px;
     }
 
     &.active {
       color: $az-color-primary;
+
       &::before {
         top: auto;
         left: 0;
@@ -67,7 +82,9 @@
   border-bottom: 1px solid $gray-300;
   overflow: hidden;
 
-  @include media-breakpoint-up(lg) { padding: 10px 15px 10px 0; }
+  @include media-breakpoint-up(lg) {
+    padding: 10px 15px 10px 0;
+  }
 
   .az-content-label {
     margin-bottom: 15px;
@@ -75,7 +92,9 @@
   }
 
   .lSSlideOuter,
-  .lSSlideWrapper { overflow: visible; }
+  .lSSlideWrapper {
+    overflow: visible;
+  }
 }
 
 .az-chat-contacts {
@@ -126,7 +145,9 @@
     border: 1px solid transparent;
     position: relative;
 
-    @include media-breakpoint-up(lg) { padding: 12px 15px; }
+    @include media-breakpoint-up(lg) {
+      padding: 12px 15px;
+    }
 
     .az-img-user {
       flex-shrink: 0;
@@ -144,7 +165,7 @@
       display: none;
     }
 
-    + .media {
+    +.media {
       margin-top: -1px;
 
       &::before {
@@ -160,14 +181,18 @@
     &.new {
       background-color: #fff;
 
-      .az-img-user span { display: flex; }
+      .az-img-user span {
+        display: flex;
+      }
 
       .media-contact-name span:first-child {
         font-weight: 700;
         color: $gray-900;
       }
 
-      .media-body p { color: $body-color; }
+      .media-body p {
+        color: $body-color;
+      }
     }
 
     @include hover-focus() {
@@ -177,7 +202,9 @@
       border-bottom-color: $gray-200;
       z-index: 1;
 
-      &:first-child { border-top-color: transparent; }
+      &:first-child {
+        border-top-color: transparent;
+      }
     }
 
     &.selected {
@@ -186,12 +213,21 @@
       border-bottom-color: $gray-200;
       z-index: 2;
 
-      &:first-child { border-top-color: transparent; }
+      &:first-child {
+        border-top-color: transparent;
+      }
 
-      &::after { display: block; }
+      &::after {
+        display: block;
+      }
 
-      .media-contact-name span:first-child { color: $gray-900; }
-      .media-body p { color: $body-color; }
+      .media-contact-name span:first-child {
+        color: $gray-900;
+      }
+
+      .media-body p {
+        color: $body-color;
+      }
     }
   }
 
@@ -248,7 +284,9 @@
   flex-direction: column;
   display: none;
 
-  @include media-breakpoint-up(lg) { display: flex; }
+  @include media-breakpoint-up(lg) {
+    display: flex;
+  }
 }
 
 .az-chat-header {
@@ -270,24 +308,38 @@
     color: $gray-300;
     font-size: 20px;
     display: none;
-    &:first-child { display: block; }
+
+    &:first-child {
+      display: block;
+    }
 
     @include media-breakpoint-up(sm) {
       display: block;
-      &:first-child { display: none; }
+
+      &:first-child {
+        display: none;
+      }
     }
 
-    i { line-height: 0; }
+    i {
+      line-height: 0;
+    }
+
     .typcn {
       line-height: .9;
-      &::before { width: auto; }
+
+      &::before {
+        width: auto;
+      }
     }
 
     @include hover-focus() {
       color: $az-color-primary;
     }
 
-    + .nav-link { margin-left: 15px; }
+    +.nav-link {
+      margin-left: 15px;
+    }
   }
 }
 
@@ -317,10 +369,14 @@
     overflow: hidden;
   }
 
-  .content-inner { padding: 20px; }
+  .content-inner {
+    padding: 20px;
+  }
 
   .media {
-    + .media { margin-top: 20px; }
+    +.media {
+      margin-top: 20px;
+    }
 
     &.flex-row-reverse {
       .media-body {
@@ -328,7 +384,9 @@
         margin-right: 20px;
         align-items: flex-end;
 
-        @include media-breakpoint-up(sm) { margin-left: 55px; }
+        @include media-breakpoint-up(sm) {
+          margin-left: 55px;
+        }
       }
 
       .az-msg-wrapper {
@@ -344,9 +402,11 @@
     flex-direction: column;
     align-items: flex-start;
 
-    @include media-breakpoint-up(sm) { margin-right: 55px; }
+    @include media-breakpoint-up(sm) {
+      margin-right: 55px;
+    }
 
-    > div:last-child {
+    >div:last-child {
       font-size: 11px;
       color: $gray-600;
       display: flex;
@@ -361,7 +421,9 @@
   text-align: center;
   margin: 20px 0;
 
-  &:first-of-type { margin-top: 0; }
+  &:first-of-type {
+    margin-top: 0;
+  }
 
   span {
     font-size: 10px;
@@ -400,14 +462,19 @@
     right: auto;
   }
 
-  .nav { align-items: center; }
+  .nav {
+    align-items: center;
+  }
+
   .nav-link {
     padding: 0;
     color: $gray-500;
     font-size: 16px;
     display: none;
 
-    + .nav-link { margin-left: 10px; }
+    +.nav-link {
+      margin-left: 10px;
+    }
 
     &:last-child {
       display: block;
@@ -416,7 +483,10 @@
 
     @include media-breakpoint-up(sm) {
       display: block;
-      &:last-child { display: none; }
+
+      &:last-child {
+        display: none;
+      }
     }
   }
 
@@ -427,10 +497,17 @@
     padding-right: 0;
     border-width: 0;
 
-    @include media-breakpoint-up(sm) { margin-left: 20px; }
-    @include media-breakpoint-up(md) { margin: 0 20px; }
+    @include media-breakpoint-up(sm) {
+      margin-left: 20px;
+    }
 
-    @include hover-focus() { box-shadow: none; }
+    @include media-breakpoint-up(md) {
+      margin: 0 20px;
+    }
+
+    @include hover-focus() {
+      box-shadow: none;
+    }
   }
 }
 
